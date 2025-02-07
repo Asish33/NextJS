@@ -9,20 +9,19 @@ const handler = NextAuth({
         username: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials,req){
-        const username = credentials?.username;
-        const password = credentials?.password;
+      async authorize(credentials, req) {
         const user = {
-            name:"asish",
-            age:19
-        }
-        if(user){
-            return user;
+          name: "username",
+          id: "1",
+          email: "aishds",
+        };
+        if (user) {
+          return user;
         }
         return null;
       }
-    }),
-  ],
+    })
+  ], secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };
